@@ -37,6 +37,7 @@ Tackling multiple tasks with a single visual language model. Design for few-shot
  1. Vision encoder: NormalizerFree ResNet (NFNet), F6 model. Pretrain the vision encoder using a contrastive objective on our datasets of image and text pairs, using the two-term contrastive loss. 
  2. Perceiver Resampler: Maps varying-size large spatio-temporal feature maps to few fixed-length visual tokens. (Reduce the computational complexity of vision-text cross attention.) The perceiver has architecture of a transformer. 
  3. Interleaved visual data and text: Gated Cross-attention (XAtten-Dense) layers within a frozen pretrained LM (pretrained 70B Chichilla). Cross-attention layer is inserted for every 1, 4, 7 LM layers. Cross-attention layers take Vision input as K and V and Language input as Q. Tanh are used after cross attention and FFW to improve the robustness and performance. 
+    ![Gated XAtten layer](images/Flamingo2.JPG)
  4. Multi-image attention: 
  
 **Training Dataset**: Flamingo is designed for general downstream tasks. Therefore it collect data with different nature, e.g. text-images pairs, video-image pairs and the MultiModal MassiveWeb (M3W) dataset (with a few pieces of text and images, text may or may not correspond to an image. Up to 5 images.). 
