@@ -20,14 +20,15 @@ Finetune methods:
 ## ViT 
  
 ## [ClipCap](https://arxiv.org/pdf/2111.09734.pdf)  
- **Motivation**: Most models that deal with image captioning task follow the encoder-decoder structuere, which requires connections between visual and textual features and it is expensive. Therefore, it is desirable to develop a faster paradigm.  
+**Motivation**: Most models that deal with image captioning task follow the encoder-decoder structuere, which requires connections between visual and textual features and it is expensive. Therefore, it is desirable to develop a faster paradigm.  
  
- <img src="images/ClipCap.JPG" width="600">
- **Method**: Map the CLIP embedding to the textual embedding space with a fixed-length. Concate the caption embedding and the visual embedding. The training objective is to autoregressively predict the caption tokens conditioning on prefix.  
+<img src="images/ClipCap.JPG" width="600">  
+ 
+**Model**: Map the CLIP embedding to the textual embedding space with a fixed-length. Concate the caption embedding and the visual embedding. The training objective is to autoregressively predict the caption tokens conditioning on prefix.  
  Freeze the CLIP and the LM and only train the mapping network rather than fine-tuning the whole LM. The mapping network is MLP when LM is not freezed, while transformer is chosen when LM is freezed.  
  During inference, caption tokens are predicted based on the visaul embeddings. 
  
- **Difficulty**: **The transferring between CLIP features and LM features**, as their latent spaces are independent and a mapping network is needed. 
+ **Difficulty**: The transferring between CLIP features and LM features, as their latent spaces are independent and a mapping network is needed. 
 
 ## Chinchilla
 
